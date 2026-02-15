@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DateCraft — AIがつくる、ふたりだけのデートコース</title>
+  <meta name="description" content="好みや雰囲気を入力するだけで、あなたたちにぴったりのデートコースをAIが提案。新宿・横浜・京都・大阪など全国対応。" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon">♡</span>
+        <span class="logo-text">DateCraft</span>
+      </a>
+      <nav class="header-nav">
+        <a href="#generator">コース作成</a>
+        <a href="#features">特徴</a>
+        <a href="#gallery">人気コース</a>
+        <a href="#reviews">口コミ</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn-icon" id="darkToggle" title="ダークモード切替">🌙</button>
+        <a href="#generator" class="btn btn-primary btn-sm">今すぐ作る</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#generator" class="mobile-nav-link">コース作成</a>
+    <a href="#features" class="mobile-nav-link">特徴</a>
+    <a href="#gallery" class="mobile-nav-link">人気コース</a>
+    <a href="#reviews" class="mobile-nav-link">口コミ</a>
+    <a href="#faq" class="mobile-nav-link">FAQ</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        <span>今日 <strong id="todayCount">247</strong> 組がプラン生成中</span>
+      </div>
+      <p class="hero-eyebrow">AI powered date planner</p>
+      <h1 class="hero-title">
+        ふたりだけの<br />
+        <span class="gradient-text">特別なデート</span>を
+      </h1>
+      <p class="hero-sub">好みや雰囲気を入力するだけで、あなたたちにぴったりのデートコースをAIが提案します。季節・天気・予算すべて対応。</p>
+      <div class="hero-btns">
+        <a href="#generator" class="btn btn-primary btn-lg">✨ 無料でコースを作る</a>
+        <a href="#gallery" class="btn btn-ghost btn-lg">人気コースを見る</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>12,400+</strong><span>生成コース</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><strong>4.9 ★</strong><span>平均評価</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><strong>全国 8 エリア</strong><span>対応</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="phone-mockup">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-header-bar">
+            <span class="phone-time">21:30</span>
+            <span class="phone-title">DateCraft</span>
+          </div>
+          <div class="mock-course-title">🌸 新宿ロマンチックプラン</div>
+          <div class="mock-card" style="animation-delay:.1s">🌿 <strong>11:00</strong> 新宿御苑 散策</div>
+          <div class="mock-card" style="animation-delay:.25s">☕ <strong>13:00</strong> 路地裏カフェ</div>
+          <div class="mock-card" style="animation-delay:.4s">🌇 <strong>17:30</strong> 都庁で夕暮れ</div>
+          <div class="mock-card active" style="animation-delay:.55s">🍽️ <strong>19:30</strong> フレンチディナー</div>
+          <div class="mock-progress">
+            <div class="mock-progress-bar"></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-float-card card-left">
+        <span>💕</span>
+        <div><strong>初デートに最適！</strong><p>3,240人が使用</p></div>
+      </div>
+      <div class="hero-float-card card-right">
+        <span>⭐</span>
+        <div><strong>満足度 98%</strong><p>今週の評価</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TOP AD BANNER ===== -->
+  <div class="ad-banner ad-leaderboard">
+    <div class="ad-inner">
+      <div class="ad-label">PR</div>
+      <div class="ad-placeholder">
+        <span class="ad-icon">🏨</span>
+        <div>
+          <strong>じゃらんnet × DateCraft</strong>
+          <p>デートにぴったりのホテルを最大40%OFF！今すぐチェック</p>
+        </div>
+        <a href="#" class="btn btn-ad">今すぐ見る →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== GENERATOR ===== -->
+  <section class="generator" id="generator">
+    <div class="container">
+      <h2 class="section-title">デートコースを作る</h2>
+      <p class="section-sub">6つの質問に答えるだけで、AIがあなただけの完璧なプランを生成します</p>
+
+      <div class="generator-layout">
+        <!-- FORM -->
+        <div class="gen-form-wrap">
+
+          <!-- Progress bar -->
+          <div class="gen-progress">
+            <div class="gen-progress-bar" id="genProgressBar" style="width:16.6%"></div>
+          </div>
+
+          <form class="gen-form" id="dateForm">
+
+            <!-- Step 1: Area -->
+            <div class="form-step active" data-step="1">
+              <div class="step-badge">Step 1 / 6</div>
+              <h3>📍 どのエリアに行きますか？</h3>
+              <p class="step-hint">交通アクセスや営業時間を考慮してご提案します</p>
+              <div class="chip-group area-chips" data-name="area">
+                <label class="chip chip-area"><input type="radio" name="area" value="tokyo-shinjuku" /><span><em>🏙️</em>新宿・渋谷</span></label>
+                <label class="chip chip-area"><input type="radio" name="area" value="tokyo-asakusa" /><span><em>🏮</em>浅草・上野</span></label>
+                <label class="chip chip-area"><input type="radio" name="area" value="tokyo-harajuku" /><span><em>🎨</em>原宿・表参道</span></label>
+                <label class="chip chip-area"><input type="radio" name="area" value="tokyo-odaiba" /><span><em>🌉</em>お台場・湾岸</span></label>
+                <label class="chip chip-area"><input type="radio" name="area" value="tokyo-roppongi" /><span><em>🌃</em>六本木・麻布</span></label>
+                <label class="chip chip-area"><input type="radio" name="area" value="yokohama" /><span><em>⛵</em>横浜</span></label>
+                <label class="chip chip-area"><input type="radio" name="area" value="kyoto" /><span><em>⛩️</em>京都</span></label>
+                <label class="chip chip-area"><input type="radio" name="area" value="osaka" /><span><em>🐙</em>大阪</span></label>
+              </div>
+            </div>
+
+            <!-- Step 2: Season / Weather -->
+            <div class="form-step" data-step="2">
+              <div class="step-badge">Step 2 / 6</div>
+              <h3>🌤️ 季節・天気は？</h3>
+              <p class="step-hint">屋内・屋外の割合をベストに調整します</p>
+              <div class="chip-group" data-name="season">
+                <label class="chip"><input type="radio" name="season" value="spring" /><span>🌸 春（3〜5月）</span></label>
+                <label class="chip"><input type="radio" name="season" value="summer" /><span>🌻 夏（6〜8月）</span></label>
+                <label class="chip"><input type="radio" name="season" value="autumn" /><span>🍁 秋（9〜11月）</span></label>
+                <label class="chip"><input type="radio" name="season" value="winter" /><span>❄️ 冬（12〜2月）</span></label>
+              </div>
+              <div class="weather-toggle">
+                <p class="step-hint" style="margin-bottom:.6rem">当日の天気</p>
+                <div class="chip-group" data-name="weather">
+                  <label class="chip"><input type="radio" name="weather" value="sunny" /><span>☀️ 晴れ</span></label>
+                  <label class="chip"><input type="radio" name="weather" value="cloudy" /><span>⛅ 曇り</span></label>
+                  <label class="chip"><input type="radio" name="weather" value="rainy" /><span>🌧️ 雨</span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Mood -->
+            <div class="form-step" data-step="3">
+              <div class="step-badge">Step 3 / 6</div>
+              <h3>💭 どんな雰囲気にしたいですか？</h3>
+              <p class="step-hint">コース全体のテーマが変わります</p>
+              <div class="chip-group mood-chips" data-name="mood">
+                <label class="chip chip-mood"><input type="radio" name="mood" value="romantic" /><span><em>💕</em><strong>ロマンチック</strong><small>ムード重視の上質なデート</small></span></label>
+                <label class="chip chip-mood"><input type="radio" name="mood" value="active" /><span><em>🏃</em><strong>アクティブ</strong><small>体を動かして楽しむ</small></span></label>
+                <label class="chip chip-mood"><input type="radio" name="mood" value="relaxing" /><span><em>☁️</em><strong>まったり</strong><small>ゆったり過ごす癒し系</small></span></label>
+                <label class="chip chip-mood"><input type="radio" name="mood" value="cultural" /><span><em>🎨</em><strong>文化・アート</strong><small>感性を磨くインドア</small></span></label>
+                <label class="chip chip-mood"><input type="radio" name="mood" value="foodie" /><span><em>🍜</em><strong>グルメ重視</strong><small>食べることが最大の喜び</small></span></label>
+                <label class="chip chip-mood"><input type="radio" name="mood" value="adventure" /><span><em>🗺️</em><strong>冒険・体験</strong><small>忘れられない体験を</small></span></label>
+              </div>
+            </div>
+
+            <!-- Step 4: Budget -->
+            <div class="form-step" data-step="4">
+              <div class="step-badge">Step 4 / 6</div>
+              <h3>💴 ふたりの合計予算は？</h3>
+              <p class="step-hint">交通費を除く飲食・入場料等の目安</p>
+              <div class="budget-cards" data-name="budget">
+                <label class="budget-card"><input type="radio" name="budget" value="low" />
+                  <div class="budget-inner">
+                    <div class="budget-icon">💴</div>
+                    <div class="budget-range">〜 ¥5,000</div>
+                    <div class="budget-label">コスパ重視</div>
+                    <ul class="budget-list"><li>✓ 無料スポット活用</li><li>✓ 食べ歩き中心</li><li>✓ 公園ピクニック</li></ul>
+                  </div>
+                </label>
+                <label class="budget-card featured"><input type="radio" name="budget" value="mid" />
+                  <div class="budget-badge-rec">人気 No.1</div>
+                  <div class="budget-inner">
+                    <div class="budget-icon">💳</div>
+                    <div class="budget-range">¥5,000〜¥15,000</div>
+                    <div class="budget-label">バランス重視</div>
+                    <ul class="budget-list"><li>✓ カフェ・レストラン</li><li>✓ 体験・アクティビティ</li><li>✓ ちょっとおしゃれな夜</li></ul>
+                  </div>
+                </label>
+                <label class="budget-card"><input type="radio" name="budget" value="high" />
+                  <div class="budget-inner">
+                    <div class="budget-icon">💎</div>
+                    <div class="budget-range">¥15,000〜</div>
+                    <div class="budget-label">プレミアム</div>
+                    <ul class="budget-list"><li>✓ 高級レストラン</li><li>✓ スパ・体験</li><li>✓ 最高の記念日に</li></ul>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Step 5: Relation -->
+            <div class="form-step" data-step="5">
+              <div class="step-badge">Step 5 / 6</div>
+              <h3>💑 おふたりの関係性は？</h3>
+              <p class="step-hint">距離感や会話のしやすさに合ったプランを提案します</p>
+              <div class="chip-group relation-chips" data-name="relation">
+                <label class="chip chip-relation"><input type="radio" name="relation" value="first" /><span><em>🌷</em><strong>初デート</strong><small>まだ緊張している</small></span></label>
+                <label class="chip chip-relation"><input type="radio" name="relation" value="early" /><span><em>💌</em><strong>付き合いたて</strong><small>もっと知りたい</small></span></label>
+                <label class="chip chip-relation"><input type="radio" name="relation" value="couple" /><span><em>💑</em><strong>安定期</strong><small>気の置けない関係</small></span></label>
+                <label class="chip chip-relation"><input type="radio" name="relation" value="longtime" /><span><em>🏡</em><strong>長期カップル</strong><small>新鮮さを取り戻したい</small></span></label>
+                <label class="chip chip-relation"><input type="radio" name="relation" value="anniversary" /><span><em>🎉</em><strong>記念日</strong><small>特別感を演出したい</small></span></label>
+                <label class="chip chip-relation"><input type="radio" name="relation" value="propose" /><span><em>💍</em><strong>プロポーズ予定</strong><small>一生忘れない日に</small></span></label>
+              </div>
+            </div>
+
+            <!-- Step 6: Themes -->
+            <div class="form-step" data-step="6">
+              <div class="step-badge">Step 6 / 6</div>
+              <h3>🏷️ こだわりのテーマを選んでください（複数可）</h3>
+              <p class="step-hint">選んだテーマをコースに盛り込みます</p>
+              <div class="chip-group" data-name="theme">
+                <label class="chip chip-check"><input type="checkbox" name="theme" value="photo" /><span>📸 インスタ映え</span></label>
+                <label class="chip chip-check"><input type="checkbox" name="theme" value="night" /><span>🌃 夜景</span></label>
+                <label class="chip chip-check"><input type="checkbox" name="theme" value="pet" /><span>🐶 ペット連れ</span></label>
+                <label class="chip chip-check"><input type="checkbox" name="theme" value="indoor" /><span>🏠 雨でもOK</span></label>
+                <label class="chip chip-check"><input type="checkbox" name="theme" value="sweets" /><span>🍰 スイーツ巡り</span></label>
+                <label class="chip chip-check"><input type="checkbox" name="theme" value="art" /><span>🎭 アート体験</span></label>
+                <label class="chip chip-check"><input type="checkbox" name="theme" value="onsen" /><span>♨️ 温泉・スパ</span></label>
+                <label class="chip chip-check"><input type="checkbox" name="theme" value="drive" /><span>🚗 ドライブ</span></label>
+                <label class="chip chip-check"><input type="checkbox" name="theme" value="kimono" /><span>👘 着物体験</span></label>
+                <label class="chip chip-check"><input type="checkbox" name="theme" value="sport" /><span>🎳 スポーツ</span></label>
+              </div>
+            </div>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn-ghost" id="prevBtn" disabled>← 戻る</button>
+              <div class="step-dots" id="stepDots"></div>
+              <button type="button" class="btn btn-primary" id="nextBtn">次へ →</button>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="gen-sidebar">
+          <!-- Sticky tip card -->
+          <div class="tip-card" id="stepTipCard">
+            <div class="tip-icon">💡</div>
+            <p class="tip-text">エリアを選ぶと、そのエリアに特化したスポットをご提案します。</p>
+          </div>
+
+          <div class="ad-box">
+            <div class="ad-label">PR</div>
+            <div class="ad-sidebar-content">
+              <div class="ad-img-placeholder">🌹</div>
+              <p><strong>記念日プレゼントに</strong></p>
+              <p class="ad-desc">日比谷花壇の花束を全国翌日配送。¥3,000〜</p>
+              <a href="#" class="btn btn-ad">詳しく見る</a>
+            </div>
+          </div>
+
+          <div class="ad-box">
+            <div class="ad-label">PR</div>
+            <div class="ad-sidebar-content">
+              <div class="ad-img-placeholder">🍷</div>
+              <p><strong>レストラン予約</strong></p>
+              <p class="ad-desc">一休.comで人気レストランを今すぐ予約。ポイント5倍</p>
+              <a href="#" class="btn btn-ad">予約する</a>
+            </div>
+          </div>
+
+          <div class="ad-box">
+            <div class="ad-label">PR</div>
+            <div class="ad-sidebar-content">
+              <div class="ad-img-placeholder">🎫</div>
+              <p><strong>前売りチケット</strong></p>
+              <p class="ad-desc">美術館・テーマパーク・イベントが事前割引で購入</p>
+              <a href="#" class="btn btn-ad">チケットを見る</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESULT ===== -->
+  <section class="result-section" id="resultSection" style="display:none;">
+    <div class="container">
+      <div class="result-header">
+        <div class="result-badge">✨ あなたへのおすすめコース</div>
+        <h2 id="resultTitle" class="result-title"></h2>
+        <p id="resultDesc" class="result-desc"></p>
+        <div class="result-meta" id="resultMeta"></div>
+      </div>
+
+      <!-- Mid-page ad -->
+      <div class="ad-banner ad-midpage">
+        <div class="ad-inner">
+          <div class="ad-label">PR</div>
+          <div class="ad-placeholder">
+            <span class="ad-icon">📸</span>
+            <div>
+              <strong>思い出を形に — フォトブック作成サービス</strong>
+              <p>デートの写真を高品質フォトブックに。初回50%OFFクーポン配布中</p>
+            </div>
+            <a href="#" class="btn btn-ad">クーポンを取得</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result layout: timeline + checklist -->
+      <div class="result-layout">
+        <div class="timeline-wrap">
+          <div class="timeline" id="courseTimeline"></div>
+        </div>
+        <div class="result-side">
+          <!-- Summary card -->
+          <div class="summary-card" id="summaryCard"></div>
+
+          <!-- Checklist -->
+          <div class="checklist-card">
+            <h4 class="checklist-title">📋 当日の持ち物チェックリスト</h4>
+            <div class="checklist" id="checklistItems"></div>
+          </div>
+
+          <!-- Sticky sidebar ad -->
+          <div class="ad-box sticky-ad">
+            <div class="ad-label">PR</div>
+            <div class="ad-sidebar-content">
+              <div class="ad-img-placeholder">🚗</div>
+              <p><strong>タイムズカーシェア</strong></p>
+              <p class="ad-desc">ドライブデートに。初月月額無料！</p>
+              <a href="#" class="btn btn-ad">無料登録</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rating -->
+      <div class="rating-section" id="ratingSection">
+        <h4>このコースはいかがでしたか？</h4>
+        <div class="star-rating" id="starRating">
+          <span class="star" data-v="1">★</span>
+          <span class="star" data-v="2">★</span>
+          <span class="star" data-v="3">★</span>
+          <span class="star" data-v="4">★</span>
+          <span class="star" data-v="5">★</span>
+        </div>
+        <p class="rating-label" id="ratingLabel">タップして評価</p>
+      </div>
+
+      <div class="result-actions">
+        <button class="btn btn-primary" id="shareBtn">📤 シェアする</button>
+        <button class="btn btn-ghost" id="regenerateBtn">🔄 再生成する</button>
+        <button class="btn btn-ghost" id="saveBtn">🔖 保存する</button>
+        <button class="btn btn-ghost" id="printBtn">🖨️ 印刷する</button>
+      </div>
+
+      <!-- Related ads grid -->
+      <div class="ad-grid">
+        <div class="ad-box-wide">
+          <div class="ad-label">PR</div>
+          <div class="ad-wide-inner">
+            <span class="ad-icon-lg">💍</span>
+            <div><strong>ジュエリーブランド</strong><p>プロポーズに贈る指輪を。無料刻印サービス実施中</p></div>
+            <a href="#" class="btn btn-ad">見てみる</a>
+          </div>
+        </div>
+        <div class="ad-box-wide">
+          <div class="ad-label">PR</div>
+          <div class="ad-wide-inner">
+            <span class="ad-icon-lg">🏨</span>
+            <div><strong>温泉宿・ホテル特集</strong><p>デートに最適な宿泊プランを最大40%OFF</p></div>
+            <a href="#" class="btn btn-ad">プランを見る</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Saved courses (localStorage) -->
+      <div class="saved-section" id="savedSection" style="display:none;">
+        <h3 class="section-title" style="font-size:1.4rem;margin-bottom:1rem;">🔖 保存したコース</h3>
+        <div class="saved-grid" id="savedGrid"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section class="features" id="features">
+    <div class="container">
+      <h2 class="section-title">DateCraft が選ばれる理由</h2>
+      <p class="section-sub">ただのデートプラン生成ツールじゃない。ふたりの関係をより深める体験を</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h3>AIパーソナライズ</h3>
+          <p>6つの質問から 72通り以上 の分岐で、ありきたりじゃないコースを生成。</p>
+          <div class="feature-num">72+ パターン</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌤️</div>
+          <h3>季節・天気対応</h3>
+          <p>雨の日には屋内スポット中心、夏には熱中症対策ルートなど天候を考慮。</p>
+          <div class="feature-num">4季節 × 3天気</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h3>予算 3段階</h3>
+          <p>節約コースから記念日の贅沢プランまで。各スポットの費用目安も表示。</p>
+          <div class="feature-num">¥3,000〜¥30,000+</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📋</div>
+          <h3>持ち物チェックリスト</h3>
+          <p>生成されたコースに合わせた持ち物をリスト化。忘れ物防止に役立てて。</p>
+          <div class="feature-num">スポット連動</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔖</div>
+          <h3>保存 & 再利用</h3>
+          <p>気に入ったプランをローカル保存。何度でも参照できます。</p>
+          <div class="feature-num">無制限保存</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📤</div>
+          <h3>LINEで簡単共有</h3>
+          <p>生成したコースをLINE・X・リンクコピーで相手に一発送信。</p>
+          <div class="feature-num">3種類の共有</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌙</div>
+          <h3>ダークモード</h3>
+          <p>夜に使っても目が疲れないダークモードを搭載。使いやすいUIを追求。</p>
+          <div class="feature-num">ワンタップ切替</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🗺️</div>
+          <h3>全国 8 エリア対応</h3>
+          <p>新宿・浅草・原宿・お台場・六本木・横浜・京都・大阪を網羅。随時追加中。</p>
+          <div class="feature-num">8 エリア</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <h2 class="section-title">人気のデートコース</h2>
+      <p class="section-sub">今週みんなに選ばれたプランをご紹介</p>
+
+      <!-- Filter tabs -->
+      <div class="gallery-filters" id="galleryFilters">
+        <button class="filter-btn active" data-filter="all">すべて</button>
+        <button class="filter-btn" data-filter="romantic">💕 ロマンチック</button>
+        <button class="filter-btn" data-filter="foodie">🍜 グルメ</button>
+        <button class="filter-btn" data-filter="active">🏃 アクティブ</button>
+        <button class="filter-btn" data-filter="cultural">🎨 文化・アート</button>
+        <button class="filter-btn" data-filter="budget">💴 節約</button>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid"></div>
+
+      <div class="gallery-more">
+        <button class="btn btn-ghost" id="loadMoreBtn">もっと見る ↓</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SEASONAL BANNER ===== -->
+  <div class="seasonal-banner" id="seasonalBanner">
+    <div class="container">
+      <div class="seasonal-inner">
+        <span class="seasonal-icon" id="seasonalIcon">🌸</span>
+        <div>
+          <strong id="seasonalTitle">春のデート特集</strong>
+          <p id="seasonalDesc">桜の季節に合わせたロマンチックなコースが登場！期間限定プランをチェック</p>
+        </div>
+        <a href="#generator" class="btn btn-primary">このコースを作る</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== AD: Mid Content ===== -->
+  <div class="ad-banner ad-full">
+    <div class="ad-inner">
+      <div class="ad-label">PR</div>
+      <div class="ad-placeholder ad-placeholder-lg">
+        <span class="ad-icon" style="font-size:3rem">🎭</span>
+        <div>
+          <strong style="font-size:1.1rem">Klook × DateCraft 特別コラボ</strong>
+          <p>teamLab・水族館・脱出ゲームなどのアクティビティが最大30%OFF。DateCraft限定クーポン配布中！</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.5rem">
+          <a href="#" class="btn btn-ad" style="font-size:.9rem;padding:.6rem 1.4rem">クーポンを取得</a>
+          <small style="color:var(--text-muted);text-align:center;font-size:.7rem">※本日限定 残り47名</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== REVIEWS ===== -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <h2 class="section-title">みんなの口コミ</h2>
+      <p class="section-sub">DateCraft を使ったカップルの声</p>
+      <div class="reviews-grid" id="reviewsGrid"></div>
+      <div class="reviews-overall">
+        <div class="overall-score">4.9</div>
+        <div class="overall-stars">★★★★★</div>
+        <div class="overall-count">全 2,140 件の評価</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <h2 class="section-title">よくある質問</h2>
+      <div class="faq-list" id="faqList"></div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="cta-shapes">
+          <div class="cta-shape cta-shape-1"></div>
+          <div class="cta-shape cta-shape-2"></div>
+        </div>
+        <h2>まだコースを作っていないあなたへ</h2>
+        <p>無料・登録不要。30秒でふたりだけの完璧なデートプランが完成します。</p>
+        <a href="#generator" class="btn btn-white btn-lg">✨ 今すぐ無料で作る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOTTOM AD ===== -->
+  <div class="ad-banner ad-bottom">
+    <div class="ad-inner">
+      <div class="ad-label">PR</div>
+      <div class="ad-placeholder">
+        <span class="ad-icon">🎫</span>
+        <div>
+          <strong>アソビュー！ — 体験ギフト</strong>
+          <p>ふたりへのプレゼントに。全国 25,000 以上のアクティビティから選べるギフト券</p>
+        </div>
+        <a href="#" class="btn btn-ad">ギフトを見る</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-icon">♡</span>
+          <span class="logo-text">DateCraft</span>
+        </div>
+        <p class="footer-tagline">ふたりの大切な時間を、もっと特別に。</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn">𝕏</a>
+          <a href="#" class="social-btn">📷</a>
+          <a href="#" class="social-btn">💬</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>サービス</h5>
+          <a href="#generator">コース作成</a>
+          <a href="#gallery">人気コース</a>
+          <a href="#reviews">口コミ</a>
+        </div>
+        <div class="footer-col">
+          <h5>サポート</h5>
+          <a href="#faq">よくある質問</a>
+          <a href="#">お問い合わせ</a>
+          <a href="#">広告掲載について</a>
+        </div>
+        <div class="footer-col">
+          <h5>法的情報</h5>
+          <a href="#">利用規約</a>
+          <a href="#">プライバシーポリシー</a>
+          <a href="#">特定商取引法</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 DateCraft. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===== MODALS ===== -->
+
+  <!-- Share Modal -->
+  <div class="modal" id="shareModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose">✕</button>
+      <h3>📤 コースをシェアする</h3>
+      <p>このデートコースをシェアして、特別な日を計画しよう！</p>
+      <div class="share-preview" id="sharePreview"></div>
+      <div class="share-buttons">
+        <button class="share-btn share-line">💬 LINE でシェア</button>
+        <button class="share-btn share-twitter">𝕏 X (Twitter) でシェア</button>
+        <button class="share-btn share-copy">🔗 リンクをコピー</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery Detail Modal -->
+  <div class="modal" id="galleryModal">
+    <div class="modal-backdrop" id="galleryBackdrop"></div>
+    <div class="modal-card modal-large">
+      <button class="modal-close" id="galleryModalClose">✕</button>
+      <div id="galleryModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toastEl"></div>
+
+  <!-- Floating action button (scroll to top) -->
+  <button class="fab" id="fabTop" title="トップに戻る" style="display:none">↑</button>
+
+  <script src="app.js"></script>
+</body>
+</html>
